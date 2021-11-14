@@ -8,6 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ARCH_MVVM"
 include ':lib_mvvm_fwk'
-include ':app'
+//include ':app'
 include ':car_hmi'
-//include ':app_hilt'

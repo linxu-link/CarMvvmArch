@@ -2,6 +2,7 @@
 .gradle
 /local.properties
 .idea
+app
 /build
 /captures
 .externalNativeBuild

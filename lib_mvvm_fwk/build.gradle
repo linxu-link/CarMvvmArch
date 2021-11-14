@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    compileOnly 'androidx.appcompat:appcompat:1.2.0'
+    compileOnly 'com.google.android.material:material:1.3.0'
+}
+
+//makeJar
+def zipFile = file('build/intermediates/aar_main_jar/release/classes.jar')
+task makeJar(type: Jar) {
+    from zipTree(zipFile)
+    archiveBaseName =  "fwk_mvvm"
+    destinationDirectory = file("build/outputs/")
+    manifest {
+        attributes(
+                'Implementation-Title': "${project.name}",
+                'Built-Date': new Date().getDateTimeString(),
+                'Built-With':
+                        "gradle-${project.getGradle().getGradleVersion()},groovy-${GroovySystem.getVersion()}",
+                'Created-By':
+                        'Java ' + System.getProperty('java.version') + ' (' + System.getProperty('java.vendor') + ')')
+    }
+}
+makeJar.dependsOn(build)

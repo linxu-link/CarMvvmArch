@@ -22,7 +22,7 @@ public class HvacRepository extends BaseRepository {
         @Override
         public void onTemperatureChanged(double temp) {
             if (mHvacViewModelCallback != null) {
-                // 处理远程数据，讲他转换为应用中需要的数据格式或内容
+                // 处理远程数据，将它转换为应用中需要的数据格式或内容
                 String value = String.valueOf(temp);
                 mHvacViewModelCallback.onTemperatureChanged(value);
             }
@@ -40,7 +40,7 @@ public class HvacRepository extends BaseRepository {
 
     public void requestTemperature() {
         LogUtils.logI(TAG, "[requestTemperature]");
-        mHvacManager.requestTemperature();
+        HvacManager.getInstance().requestTemperature();
     }
 
     public void setTemperature(String temperature) {

@@ -30,6 +30,12 @@ public class LogUtils {
     public static void logD(String tag, String info) {
         if (DEBUG) {
             Log.d(tag, "[thread:" + Thread.currentThread().getName() + "] - " + info);
+            StackTraceElement[] stackTraceElement = Thread.currentThread().getStackTrace();
+            for (StackTraceElement traceElement : stackTraceElement) {
+                Log.d(tag, "[thread:" + Thread.currentThread().getName()
+                        + " - class:" + traceElement.getClassName()
+                        + "." + traceElement.getMethodName() + "]");
+            }
         }
     }
 
@@ -66,12 +72,6 @@ public class LogUtils {
     public static void logW(String tag, String info) {
         if (WARN) {
             Log.w(tag, "[thread:" + Thread.currentThread().getName() + "] - " + info);
-            StackTraceElement[] stackTraceElement = Thread.currentThread().getStackTrace();
-            for (StackTraceElement traceElement : stackTraceElement) {
-                Log.w(tag, "[thread:" + Thread.currentThread().getName()
-                        + " - class:" + traceElement.getClassName()
-                        + "." + traceElement.getMethodName() + "]");
-            }
         }
     }
 

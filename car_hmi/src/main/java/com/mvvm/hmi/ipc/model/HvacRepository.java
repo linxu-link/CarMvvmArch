@@ -6,14 +6,11 @@ import com.fwk.sdk.hvac.HvacManager;
 import com.fwk.sdk.hvac.IHvacCallback;
 import com.mvvm.fwk.model.BaseRepository;
 import com.mvvm.fwk.utils.LogUtils;
-import com.mvvm.hmi.ipc.IpcApp;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.mvvm.hmi.ipc.CarApp;
 
 public class HvacRepository extends BaseRepository {
 
-    private static final String TAG = IpcApp.TAG_HVAC + HvacRepository.class.getSimpleName();
+    private static final String TAG = CarApp.TAG_HVAC + HvacRepository.class.getSimpleName();
 
     private final HvacManager mHvacManager;
     private HvacCallback mHvacViewModelCallback;

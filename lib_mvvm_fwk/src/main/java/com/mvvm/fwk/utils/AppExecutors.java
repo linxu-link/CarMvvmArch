@@ -38,7 +38,7 @@ public class AppExecutors {
         mPauseCondition = mLock.newCondition();
         int cpuCount = Runtime.getRuntime().availableProcessors();
         int corePoolSize = cpuCount + 1;
-        int maxPoolSize = cpuCount * 2 + 1;
+        int maxPoolSize = Integer.MAX_VALUE;
         PriorityBlockingQueue<Runnable> blockingQueue = new PriorityBlockingQueue<>();
 
         AtomicLong seq = new AtomicLong();

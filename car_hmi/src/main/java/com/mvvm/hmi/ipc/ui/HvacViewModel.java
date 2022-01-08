@@ -2,20 +2,20 @@ package com.mvvm.hmi.ipc.ui;
 
 import android.view.View;
 
-import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.fwk.sdk.hvac.IHvacCallback;
 import com.mvvm.fwk.utils.AppExecutors;
 import com.mvvm.fwk.utils.LogUtils;
+import com.mvvm.fwk.utils.eventbus.LiveDataBus;
 import com.mvvm.fwk.viewmodel.BaseViewModel;
-import com.mvvm.hmi.ipc.IpcApp;
+import com.mvvm.hmi.ipc.CarApp;
 import com.mvvm.hmi.ipc.model.HvacCallback;
 import com.mvvm.hmi.ipc.model.HvacRepository;
 
 public class HvacViewModel extends BaseViewModel<HvacRepository> {
 
-    private static final String TAG = IpcApp.TAG_HVAC + HvacViewModel.class.getSimpleName();
+    private static final String TAG = CarApp.TAG_HVAC + HvacViewModel.class.getSimpleName();
 
     private final HvacRepository mRepository;
     // 线程池框架。某些场景，ViewModel访问Repository中的方法可能会需要切换到子线程。

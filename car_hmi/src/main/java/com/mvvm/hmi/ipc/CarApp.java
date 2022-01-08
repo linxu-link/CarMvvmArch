@@ -2,7 +2,7 @@ package com.mvvm.hmi.ipc;
 
 import android.app.Application;
 
-public class IpcApp extends Application {
+public class CarApp extends Application {
 
     public static final String TAG_HVAC = "HVAC_";
 

@@ -1,22 +1,28 @@
 package com.mvvm.hmi.ipc.ui;
 
+import android.content.Intent;
+
 import androidx.lifecycle.Observer;
 
 import com.mvvm.fwk.ui.BaseMvvmActivity;
 import com.mvvm.fwk.utils.LogUtils;
+import com.mvvm.fwk.utils.eventbus.LiveDataBus;
 import com.mvvm.hmi.ipc.BR;
-import com.mvvm.hmi.ipc.IpcApp;
+import com.mvvm.hmi.ipc.CarApp;
 import com.mvvm.hmi.ipc.R;
 import com.mvvm.hmi.ipc.databinding.ActivityHvacBinding;
 import com.mvvm.hmi.ipc.factory.AppInjection;
 
-public class HvacActivity extends BaseMvvmActivity<HvacViewModel, ActivityHvacBinding> {
-
-    private static final String TAG = IpcApp.TAG_HVAC + HvacActivity.class.getSimpleName();
+public class HvacActivity extends BaseMvvmActivity<HvacViewModel,ActivityHvacBinding>{
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_hvac;
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
@@ -26,26 +32,16 @@ public class HvacActivity extends BaseMvvmActivity<HvacViewModel, ActivityHvacBi
 
     @Override
     protected int getViewModelVariable() {
-        return BR.viewModel;
-    }
-
-    @Override
-    protected void initView() {
-
+        return 0;
     }
 
     @Override
     protected void initObservable(HvacViewModel viewModel) {
-        viewModel.getTempLive().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String temp) {
-                LogUtils.logI(TAG, "[onChanged] " + temp);
-            }
-        });
+
     }
 
     @Override
     protected void loadData(HvacViewModel viewModel) {
-        viewModel.requestTemperature();
+
     }
 }
